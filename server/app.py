@@ -47,6 +47,17 @@ def get_user_info():
     print("user info", user_info_dicts)
     return jsonify({"user_info": user_info_dicts})
 
+#display more details of the user complaint 
+@app.get('/userComplaint/<int:id>')
+def get_user_complaint_(id):
+    complaint_info = User_Form.query.filter_by(id=id).first()
+
+    if complaint_info:
+        complaint_response = complaint_info.to_dict() 
+        print("complaint info", complaint_response)
+        return jsonify({"complaint_info": complaint_response})
+    else:
+        return jsonify({"error": "Complaint not found"}), 404
 
 @app.route("/")
 def hello_zealthy():

@@ -4,6 +4,7 @@ import './App.css'
 import axios from 'axios'
 import UserForm from './components/UserForm.js'
 import AdminPage from './components/AdminPage.js'
+import ComplaintPage from './components/ComplaintPage.js';
 import Error from './components/Error.js'
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
     <BrowserRouter>
         <Routes>
           <Route path="/" element={<UserForm/>}/>
-          <Route path="admin" element={<AdminPage/>}/>
+          <Route path="/admin" element={<AdminPage/>}/>
+          <Route path="/admin/:id" element={<ComplaintPage/>}/>
           <Route path="*" element={<Error/>}/>
         </Routes>
     </BrowserRouter>
