@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import StatusButton from './StatusButton';
 
 function ComplaintPage () {
@@ -21,7 +22,7 @@ function ComplaintPage () {
 
     return (
         <div className ="flex items-center justify-center h-screen bg-purple-200/50">
-            <div className="max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-700 dark:border-gray-700">
                 <div className = "text-xl mb-3 font-bold text-purple-500">
                     <h2>Complaint # {userComplaint.id}</h2>
                 </div>
@@ -36,7 +37,7 @@ function ComplaintPage () {
                     <h3 class="mb-3 font-normal text-gray-700 dark:text-gray-400">{userComplaint.description}</h3>
 
                     <h3 class="mb-3 font-normal text-gray-700 dark:text-gray-400">Status: </h3>
-                    < StatusButton />
+                    < StatusButton userComplaint={userComplaint}/>
                                         
                     <h3 class="mb-3 font-normal text-gray-700 dark:text-gray-400">Response: </h3>
                     <h3 class="mb-3 font-normal text-gray-700 dark:text-gray-400">{userComplaint.response}</h3>
@@ -59,6 +60,9 @@ function ComplaintPage () {
                         
                 </form>
                 
+            <div class=" text-center mt-4 underline">
+                <Link to= '/admin'> Return to Admin Page</Link>
+            </div>
                 </div>
                 
             

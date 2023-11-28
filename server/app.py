@@ -49,8 +49,9 @@ def get_user_info():
 
 #display more details of the user complaint 
 @app.get('/userComplaint/<int:id>')
-def get_user_complaint_(id):
-    complaint_info = User_Form.query.filter_by(id=id).first()
+def get_user_complaint(id:id):
+    complaint_info = User_Form.query.filter(User_Form.id == id).first()
+    print("AAJAJAAJJAJAJAAAAA")
 
     if complaint_info:
         complaint_response = complaint_info.to_dict() 
@@ -58,6 +59,30 @@ def get_user_complaint_(id):
         return jsonify({"complaint_info": complaint_response})
     else:
         return jsonify({"error": "Complaint not found"}), 404
+    
+#Update complaint status 
+@app.patch('/updateState/<int:id>')
+def update_status(id:id):
+    requested_data = request.get_json()
+    print(requested_data)
+
+    user_status = User_Form.query.filter(User_Form.id == id).first()
+    
+    if user_status:
+
+        new_status = requested_data['status']
+
+        user_status.status = new_status
+
+        db.session.commit()
+
+        print(new_status)
+
+        return jsonify(new_status), 200
+
+    else:
+        return jsonify({"error": "User not found"}), 404
+    
 
 @app.route("/")
 def hello_zealthy():
