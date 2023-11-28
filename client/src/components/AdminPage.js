@@ -5,7 +5,6 @@ function  AdminPage () {
     const [userInfo, setUserInfo] = useState([])
 
     useEffect(() => {
-        console.log("HELLOOOO");
         fetch('/userInfo')
             .then(response => response.json())
             .then(data => {
@@ -19,7 +18,7 @@ function  AdminPage () {
 
     return (
         <div className="flex items-center justify-center h-screen">
-            <div class="flex flex-col">
+            <div class="p-8 bg-slate-50 shadow-md rounded">
                 <div class="-m-1.5 overflow-x-auto">
                     <div class="p-1.5 min-w-full inline-block align-middle">
                     <div class="overflow-hidden">
@@ -32,9 +31,9 @@ function  AdminPage () {
                             <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Status</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <tbody class="divide-y divide-gray-200">
                             {userInfo.map(user => (
-                                <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <tr class="hover:bg-slate-200">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.first_name} {user.last_name}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{user.email}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{user.description}</td>
