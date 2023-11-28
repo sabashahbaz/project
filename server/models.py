@@ -11,6 +11,8 @@ class User_Form(db.Model):
     last_name = db.Column(db.String(50), nullable = False, default = "")
     email = db.Column(db.String(50), nullable = False, default = "")
     description = db.Column(db.String(1000), nullable = False, default = "")
+    status = db.Column(db.String(50), nullable = False, default = "New")
+    
 
     def to_dict(self):
         return{
@@ -18,5 +20,6 @@ class User_Form(db.Model):
             "first_name": self.first_name,
             "last_name": self.last_name,  
             "email": self.email,
-            "description": self.description
+            "description": self.description,
+            "status": self.status
         }
