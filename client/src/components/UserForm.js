@@ -110,10 +110,7 @@ function UserForm () {
 
             {showSuccessModal ? <SuccessModal setShowSuccessModal={setShowSuccessModal} /> : null }
             
-
-            {showErrorModal && (
-                <ErrorModal />
-            ) }
+            {showErrorModal ? <ErrorModal setShowErrorModal={setShowErrorModal} /> : null}
 
         </div>    
         

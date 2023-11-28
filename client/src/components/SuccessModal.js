@@ -17,7 +17,7 @@ function SuccessModal({setShowSuccessModal}) {
                 <button
                 type="button"
                 className="text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 flex justify-center items-center"
-                onClick={() => setShowSuccessModal(false)}
+                onClick={closeAndRefresh} 
                 >
                 <svg
                     className="w-3 h-3"
