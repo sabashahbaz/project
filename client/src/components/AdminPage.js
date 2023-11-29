@@ -24,7 +24,7 @@ function  AdminPage () {
                 <div class="p-5 bg-slate-50 shadow-md rounded">
                     <div class="-m-1.5 overflow-x-auto">
                         <div class="p-1.5 min-w-full inline-block align-middle">
-                        <h2 className="text-center mb-8 text-purple-500 font-bold text-2xl">View Submitted Patient Complaints</h2>
+                        <h2 className="text-center mb-8 text-purple-500 font-bold text-2xl">Patient Complaints</h2>
                         <div class="overflow-hidden">
                             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                             <thead>
