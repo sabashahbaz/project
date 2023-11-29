@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 SQLAlchemy = '1.4.49'
 flask = "*"
-flask-sqlalchemy = "2.5.1"
 flask-migrate = "3.1.0"
 flask-restful = "*"
 pytest = "7.1.3"
