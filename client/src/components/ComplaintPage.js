@@ -37,6 +37,7 @@ function ComplaintPage () {
             .then(response => response.json())
             .then(data => {
                 setResponse("")
+                console.log("Would noramlly email response to user")
             })
             .catch(error => {
                 console.error("Error updating response:", error);
@@ -54,6 +55,7 @@ function ComplaintPage () {
             .then(response => response.json())
             .then(data => {
                 setResponse("")
+                console.log("Would noramlly email response to user")
             })
         }  
         window.location.reload()
