@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "async-lru": "^1.1.3"
+  }
+}
