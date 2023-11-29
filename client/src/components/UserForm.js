@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import axios from 'axios'
 import SuccessModal from './SuccessModal';
 import ErrorModal from './ErrorModal';
-import background from '../assets/background.png'
 
 
 function UserForm () {
@@ -107,13 +106,9 @@ function UserForm () {
                 <Link to= '/admin'> Not a user? Click here to view Admin Page</Link>
             </div>
             </form>
-
             {showSuccessModal ? <SuccessModal setShowSuccessModal={setShowSuccessModal} /> : null }
-            
             {showErrorModal ? <ErrorModal setShowErrorModal={setShowErrorModal} /> : null}
-
-        </div>    
-        
+        </div>     
     )
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 
+//will present if there is an error when user submits their information
 function ErrorModal({setShowErrorModal}) {
 
     function closeAndRefresh() {
@@ -55,6 +56,6 @@ function ErrorModal({setShowErrorModal}) {
         </div>
     </div>
     )
-}
+};
 
 export default  ErrorModal 

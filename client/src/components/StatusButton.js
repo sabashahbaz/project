@@ -11,7 +11,6 @@ function StatusButton ({userComplaint}) {
     
     function updateComplaintStatus (status) {
         setStatus(status)
-        //console.log("meow")
         fetch(`/updateState/${userComplaint.id}`, {
             method: 'PATCH',
             headers: {
@@ -23,12 +22,10 @@ function StatusButton ({userComplaint}) {
         })
         .then(response => response.json())
         .then(data => {
-            //console.log("what is the data",data)
             setStatus(data)
         })
+        window.location.reload()
     }
-
-    //console.log("Status", status)
 
     return (
         <div class="relative inline-block text-left">
@@ -53,6 +50,6 @@ function StatusButton ({userComplaint}) {
             </div> 
         </div>
     )
-}
+};
 
 export default StatusButton

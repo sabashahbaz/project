@@ -78,7 +78,7 @@ def update_status(id:id):
     else:
         return jsonify({"error": "User not found"}), 404
     
-#Add response
+#Add admin response
 @app.post('/addResponse/<int:id>')
 def add_response(id:id):
     print("PLEASE WORK")
@@ -95,7 +95,7 @@ def add_response(id:id):
     else:
         return jsonify({"error": "User not found"}), 404
     
-#Update response
+#Update the admin response
 @app.patch('/updateResponse/<int:id>')
 def update_response(id:id):
     requested_data = request.get_json()
