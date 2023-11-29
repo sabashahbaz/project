@@ -41,21 +41,21 @@ def submit_user_form():
 def get_user_info():
     print("meowSFJSFJAAAAAAAAAAAAAAAAAA")
     user_info = User_Form.query.all()
-    print("hi")
+    #print("hi")
 
     user_info_dicts = [user.to_dict() for user in user_info]
-    print("user info", user_info_dicts)
+    #print("user info", user_info_dicts)
     return jsonify({"user_info": user_info_dicts})
 
 #display more details of the user complaint 
 @app.get('/userComplaint/<int:id>')
 def get_user_complaint(id:id):
     complaint_info = User_Form.query.filter(User_Form.id == id).first()
-    print("AAJAJAAJJAJAJAAAAA")
+    #print("AAJAJAAJJAJAJAAAAA")
 
     if complaint_info:
         complaint_response = complaint_info.to_dict() 
-        print("complaint info", complaint_response)
+        #print("complaint info", complaint_response)
         return jsonify({"complaint_info": complaint_response})
     else:
         return jsonify({"error": "Complaint not found"}), 404
@@ -69,16 +69,46 @@ def update_status(id:id):
     user_status = User_Form.query.filter(User_Form.id == id).first()
     
     if user_status:
-
         new_status = requested_data['status']
-
         user_status.status = new_status
-
         db.session.commit()
 
-        print(new_status)
-
         return jsonify(new_status), 200
+
+    else:
+        return jsonify({"error": "User not found"}), 404
+    
+#Add response
+@app.post('/addResponse/<int:id>')
+def add_response(id:id):
+    print("PLEASE WORK")
+    requested_data = request.get_json()
+    print("requested data",requested_data)
+
+    user_data = User_Form.query.filter(User_Form.id == id).first()
+
+    if user_data: 
+        user_data.admin_response = requested_data['response']
+        db.session.commit()
+
+        return {"response": user_data.to_dict()}
+    else:
+        return jsonify({"error": "User not found"}), 404
+    
+#Update response
+@app.patch('/updateResponse/<int:id>')
+def update_response(id:id):
+    requested_data = request.get_json()
+    print(requested_data)
+
+    user = User_Form.query.filter(User_Form.id == id).first()
+    
+    if user:
+        new_response = requested_data['response']
+        user.admin_response = new_response
+        db.session.commit()
+
+        return jsonify(new_response), 200
 
     else:
         return jsonify({"error": "User not found"}), 404

@@ -8,9 +8,10 @@ function StatusButton ({userComplaint}) {
     function toggleButton () {
         setShowOptions(!showOptions)
     }
+    
     function updateComplaintStatus (status) {
         setStatus(status)
-        console.log("meow")
+        //console.log("meow")
         fetch(`/updateState/${userComplaint.id}`, {
             method: 'PATCH',
             headers: {
@@ -22,19 +23,19 @@ function StatusButton ({userComplaint}) {
         })
         .then(response => response.json())
         .then(data => {
-            console.log("what is the data",data)
+            //console.log("what is the data",data)
             setStatus(data)
         })
     }
 
-    console.log("Status", status)
+    //console.log("Status", status)
 
     return (
         <div class="relative inline-block text-left">
             <div>
-                <button type="button" class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" aria-expanded="true" aria-haspopup="true"
+                <button type="button" class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-1 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" aria-expanded="true" aria-haspopup="true"
                 onClick={toggleButton}>
-                {status}
+                {userComplaint.status}
                 <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" >
                     <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                 </svg>

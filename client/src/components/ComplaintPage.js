@@ -9,6 +9,8 @@ function ComplaintPage () {
     const [userComplaint, setUserComplaint] = useState("")
     const [response, setResponse] = useState("")
 
+    console.log(response)
+
     useEffect(() => {
         fetch(`/userComplaint/${id}`)
             .then(response => response.json())
@@ -17,6 +19,47 @@ function ComplaintPage () {
                 setUserComplaint(data.complaint_info);
             });
     }, [id]);
+
+    function postAndPatchResponse (e) {
+        e.preventDefault()
+       // setResponse(response)
+        console.log("AAAAAAAA")
+        if (userComplaint.admin_response) {
+            fetch(`/updateResponse/${userComplaint.id}`, {
+                method: 'PATCH',
+                headers: {
+                    "Content-Type": "application/JSON"
+                },
+                body: JSON.stringify({
+                    "response": response
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("what is the data",data)
+                setResponse("")
+            })
+            .catch(error => {
+                console.error("Error updating response:", error);
+            });
+        } else {
+            fetch(`/addResponse/${userComplaint.id}`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/JSON"
+                },
+                body: JSON.stringify({
+                    "response": response
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("what is the data",data)
+                setResponse("")
+            })
+        }  
+        window.location.reload()
+    }
 
     console.log("user complaint", userComplaint)
 
@@ -40,10 +83,10 @@ function ComplaintPage () {
                     < StatusButton userComplaint={userComplaint}/>
                                         
                     <h3 class="mb-3 font-normal text-gray-700 dark:text-gray-400">Response: </h3>
-                    <h3 class="mb-3 font-normal text-gray-700 dark:text-gray-400">{userComplaint.response}</h3>
+                    <h3 class="mb-3 font-normal text-gray-700 dark:text-gray-400">{userComplaint.admin_response}</h3>
                 </div>
 
-                <form>
+                <form onSubmit={postAndPatchResponse}>
                     <div class="flex flex-wrap -mx-3 mt-5">
                     <div class="w-full px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-description">
@@ -56,6 +99,13 @@ function ComplaintPage () {
                         value={response}
                         onChange={(e)=> setResponse(e.target.value)}/>
                     </div>
+                </div>
+
+                <div class="flex items-center justify-center">
+                <button class="shadow w-1/2 bg-purple-500 hover:bg-purple-400 focus:shadow-outline-purple text-white font-bold py-1 px-4 rounded" 
+                    type="submit">
+                    Add Response
+                </button>
                 </div>
                         
                 </form>
@@ -75,9 +125,3 @@ export default ComplaintPage
 
 
 
- {/* <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Read more
-                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                    </svg>
-                </a> */}
