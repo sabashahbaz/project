@@ -1,18 +1,22 @@
 from flask import Flask, request, make_response, jsonify 
+from flask import send_from_directory
 from flask_migrate import Migrate
-from .models import db, User_Form
+from models import db, User_Form
 from flask_cors import CORS
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='app')
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
+db.init_app(app)
 migrate = Migrate(app, db)
 
-db.init_app(app)
-
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return app.send_static_file("index.html")
 
 #submit user info to database 
 @app.post('/submit_user_form')
@@ -114,7 +118,7 @@ def update_response(id:id):
         return jsonify({"error": "User not found"}), 404
     
 
-@app.route("/")
+@app.route("/hello")
 def hello_zealthy():
     return "Hello Zealthy!"
 
