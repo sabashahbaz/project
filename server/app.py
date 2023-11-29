@@ -1,6 +1,6 @@
 from flask import Flask, request, make_response, jsonify 
 from flask_migrate import Migrate
-from models import db, User_Form
+from .models import db, User_Form
 from flask_cors import CORS
 
 
