@@ -1,4 +1,4 @@
-# project
+Zealthy Coding Exercise 
 
 
 <p align="center">
