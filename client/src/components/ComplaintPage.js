@@ -65,7 +65,7 @@ function ComplaintPage () {
 
     return (
         <div className ="flex items-center justify-center h-screen bg-purple-200/50">
-            <div className="max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-700 dark:border-gray-700">
+            <div className="max-w-xl p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-700 dark:border-gray-700">
                 <div className = "text-xl mb-3 font-bold text-purple-500">
                     <h2>Complaint # {userComplaint.id}</h2>
                 </div>
