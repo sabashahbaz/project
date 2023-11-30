@@ -15,7 +15,8 @@ function UserForm () {
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [showErrorModal, setShowErrorModal] = useState(false);
 
-    //submit user info 
+
+    //submit user info --> WITH BACKEND SERVER 
     function submitUserForm(e) {
         e.preventDefault()
         console.log("did we make it?")
@@ -90,7 +91,6 @@ function UserForm () {
                     id="grid-password" 
                     type="text" 
                     placeholder="enter description of your complaint there"
-                    value={description}
                     onChange={(e)=> setDescription(e.target.value)}/>
                 </div>
             </div>

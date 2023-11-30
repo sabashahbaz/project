@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom';
 import ComplaintPage from './ComplaintPage';
 
-function  AdminPage () {
+function  AdminPage ({firstName, lastName, email, description, status}) {
 
     const [userInfo, setUserInfo] = useState([])
 
@@ -17,6 +17,7 @@ function  AdminPage () {
     }, []);
     
     console.log("userInfo", userInfo)
+    
     
     return (
         <div>
