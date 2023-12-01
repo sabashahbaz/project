@@ -39,9 +39,7 @@ def submit_user_form():
 #display the information the user has submitted
 @app.get('/userInfo')
 def get_user_info():
-    print("meowSFJSFJAAAAAAAAAAAAAAAAAA")
     user_info = User_Form.query.all()
-    #print("hi")
 
     user_info_dicts = [user.to_dict() for user in user_info]
     #print("user info", user_info_dicts)
@@ -51,7 +49,6 @@ def get_user_info():
 @app.get('/userComplaint/<int:id>')
 def get_user_complaint(id:id):
     complaint_info = User_Form.query.filter(User_Form.id == id).first()
-    #print("AAJAJAAJJAJAJAAAAA")
 
     if complaint_info:
         complaint_response = complaint_info.to_dict() 
@@ -81,7 +78,6 @@ def update_status(id:id):
 #Add admin response
 @app.post('/addResponse/<int:id>')
 def add_response(id:id):
-    print("PLEASE WORK")
     requested_data = request.get_json()
     print("requested data",requested_data)
 
