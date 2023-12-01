@@ -13,7 +13,7 @@ Zealthy Coding Exercise
 git clone git@github.com:sabashahbaz/zealthy_coding_exercise.git
 ```
 
-2. Install the required dependencies using pipenv:
+2. Install the required dependencies:
 
 Run the back-end server: 
 
